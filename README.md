@@ -1,3 +1,8 @@
 # is322-project2
 
-![Main Demo](demo/main.gif)
+How to Run
+
+- yarn start
+- yarn mockdb
+
+![Project Demo](demo/demo.gif)

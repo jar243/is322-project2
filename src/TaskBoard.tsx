@@ -66,7 +66,9 @@ const TaskBoard: FC<TaskBoardProps> = ({
     <Row>
       {columnNames.map((colName, index) => (
         <Col className="pt-1">
-          <h3 className="text-center mb-5 py-3 border">{colName}</h3>
+          <h3 className="text-center text-primary mb-4 py-3 border border-primary">
+            {colName}
+          </h3>
           {tasks
             .filter((task) => task.status === index)
             .map((task) => (

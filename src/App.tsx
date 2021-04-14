@@ -8,6 +8,7 @@ import type { Task } from "./api"
 
 import AppNav from "./AppNav"
 import TaskBoard from "./TaskBoard"
+import TaskForm from "./TaskForm"
 
 interface State {
   tasks: Task[]
@@ -27,13 +28,15 @@ class App extends React.Component<{}, State> {
   }
 
   changeTaskStatus(task: Task, status: TaskStatus) {
-    TaskApi.updateTaskStatus(task, status)
-    this.refreshTasks()
+    TaskApi.updateTaskStatus(task, status).then(() => this.refreshTasks())
   }
 
   deleteTask(taskId: number) {
-    TaskApi.deleteTask(taskId)
-    this.refreshTasks()
+    TaskApi.deleteTask(taskId).then(() => this.refreshTasks())
+  }
+
+  addTask(title: string, body: string) {
+    TaskApi.newTask(title, body).then(() => this.refreshTasks())
   }
 
   render() {
@@ -41,18 +44,18 @@ class App extends React.Component<{}, State> {
       <HashRouter>
         <AppNav />
         <Container>
-          <Route path="/task-grid">
+          <Route path="/task-board">
             <TaskBoard
               tasks={this.state.tasks}
               changeStatusFunc={this.changeTaskStatus.bind(this)}
               deleteFunc={this.deleteTask.bind(this)}
             />
           </Route>
-          <Route path="/new-task">
-            <p>New Task</p>
+          <Route path="/add-task">
+            <TaskForm submitFunc={this.addTask.bind(this)} />
           </Route>
           <Route path="/">
-            <Redirect to="/task-grid" />
+            <Redirect to="/task-board" />
           </Route>
         </Container>
       </HashRouter>
