@@ -1,0 +1,28 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Cook Dinner",
+      "body": "might need more ingredients",
+      "status": 0
+    },
+    {
+      "id": 2,
+      "title": "Walk Dog",
+      "body": "don't forget a leash",
+      "status": 1
+    },
+    {
+      "id": 3,
+      "title": "Apply for Job",
+      "body": "website is xyz.com",
+      "status": 2
+    },
+    {
+      "id": 4,
+      "title": "Something Else",
+      "body": "running out of ideas",
+      "status": 3
+    }
+  ]
+}
